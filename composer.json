@@ -1,0 +1,33 @@
+{
+  "name": "lambdacreatives/tracker",
+  "type": "library",
+  "license": "MIT",
+  "description": "An API for tracking theme usage.",
+  "homepage": "https://github.com/lambdacreatives/tracker",
+  "authors": [
+    {
+      "name": "Daniel Hewes",
+      "email": "daniel@lambdacreatives.com",
+      "homepage": "https://github.com/danimalweb"
+    }
+  ],
+  "keywords": [
+    "WordPress",
+    "theme",
+    "tracker"
+  ],
+  "repositories": [
+    {
+      "type": "git",
+      "url": "git@github.com:lambdacreatives/Database-Connector.git"
+    }
+  ],
+  "require": {
+    "slim/slim": "^3.0@RC",
+    "lambdacreatives/Database-Connector": "dev-master",
+    "vlucas/phpdotenv": "^2.1"
+  },
+  "require-dev": {
+    "squizlabs/php_codesniffer": "2.*"
+  }
+}
