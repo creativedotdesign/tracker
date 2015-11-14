@@ -52,15 +52,15 @@ $valid = function ($request, $response, $next) {
 
 $app->post('/api/theme', function ($request, $response, $args) {
 
-    $response->write(json_encode(array(
-      'error' => false,
-      'message' => 'OK'
-    )));
+  $response->write(json_encode(array(
+    'error' => false,
+    'message' => 'OK'
+  )));
 
-    //Override existing header with new header.
-    $response = $response->withHeader('Content-type', 'application/json');
+  //Override existing header with new header.
+  $response = $response->withHeader('Content-type', 'application/json');
 
-    return $response;
-})->add($valid)->add($auth);
+  return $response;
+})->add($valid)->add($auth); // Middleware
 
 $app->run();
