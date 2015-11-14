@@ -29,6 +29,26 @@ $auth = function ($request, $response, $next) {
   return $response;
 };
 
+// Valid Request Middleware - Check valid JSON in request body
+$valid = function ($request, $response, $next) {
+  $body = $request->getBody();
+
+  if (!empty($body) && json_decode($body)) {
+    $response = $next($request, $response);
+  } else {
+    $response = (new Response())
+      ->withStatus(400) // Bad request
+      ->withHeader('Content-type', 'application/json') // Override existing header with new header.
+      ->write(json_encode(array(
+        'error' => true,
+        'message' => 'Invalid JSON data recevied.'
+      ))
+    );
+  }
+
+  return $response;
+};
+
 $app->post('/api/theme', function ($request, $response, $args) {
 
     $response->write(json_encode(array(
