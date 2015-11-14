@@ -8,9 +8,8 @@ $dotenv->required(['DB_HOST', 'DB_NAME', 'DB_USER', 'DB_PASS', 'API_KEY'])->notE
 
 $app = new Slim\App();
 
-// Global Middleware - API key header checker
-$app->add(function ($request, $response, $next) {
-
+// API Key Middleware - API key header checker
+$auth = function ($request, $response, $next) {
   $headers       = apache_request_headers(); // Need to use apache_request_headers to get the Authorization header.
   $authorization = $headers['Authorization'];
 
@@ -28,7 +27,7 @@ $app->add(function ($request, $response, $next) {
   }
 
   return $response;
-});
+};
 
 $app->post('/api/theme', function ($request, $response, $args) {
 
