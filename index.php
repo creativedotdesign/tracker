@@ -60,6 +60,6 @@ $app->post('/api/theme', function ($request, $response, $args) {
     $response = $response->withHeader('Content-type', 'application/json');
 
     return $response;
-});
+})->add($valid)->add($auth);
 
 $app->run();
