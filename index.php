@@ -22,8 +22,7 @@ $auth = function ($request, $response, $next) {
       ->write(json_encode(array(
         'error' => true,
         'message' => 'API key missing or invalid.'
-      ))
-    );
+      )));
   }
 
   return $response;
@@ -39,10 +38,9 @@ $valid = function ($request, $response, $next) {
     $response->withStatus(400); // Bad request
     $response->withHeader('Content-type', 'application/json'); // Override existing header with new header.
     $response->write(json_encode(array(
-        'error' => true,
-        'message' => 'Invalid JSON data recevied.'
-      ))
-    );
+      'error' => true,
+      'message' => 'Invalid JSON data recevied.'
+    )));
   } else {
     $response = $next($request, $response);
   }
