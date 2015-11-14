@@ -18,7 +18,7 @@ $app->add(function ($request, $response, $next) {
     $response = $next($request, $response);
   } else {
     $response = (new Response())
-      ->withStatus(400) //Bad request
+      ->withStatus(401) //Authentication failure
       ->withHeader('Content-type', 'application/json') // Override existing header with new header.
       ->write(json_encode(array(
         'error' => true,
