@@ -31,19 +31,20 @@ $auth = function ($request, $response, $next) {
 
 // Valid Request Middleware - Check valid JSON in request body
 $valid = function ($request, $response, $next) {
-  $body = $request->getBody();
 
-  if (!empty($body) && json_decode($body)) {
-    $response = $next($request, $response);
-  } else {
-    $response = (new Response())
-      ->withStatus(400) // Bad request
-      ->withHeader('Content-type', 'application/json') // Override existing header with new header.
-      ->write(json_encode(array(
+  $data         = $request->getBody()->getContents();
+  $content_type = $request->getContentType();
+
+  if ($content_type !== 'application/json' || json_decode($data) === null) {
+    $response->withStatus(400); // Bad request
+    $response->withHeader('Content-type', 'application/json'); // Override existing header with new header.
+    $response->write(json_encode(array(
         'error' => true,
         'message' => 'Invalid JSON data recevied.'
       ))
     );
+  } else {
+    $response = $next($request, $response);
   }
 
   return $response;
