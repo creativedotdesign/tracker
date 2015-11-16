@@ -1,0 +1,55 @@
+<html>
+  <head>
+    <title>Tracker</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+  </head>
+  <body>
+    <h1 class="text-center">Theme Tracker Data</h1>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+
+          <table class="table table-striped table-sm">
+            <thead class="thead-inverse">
+              <tr>
+                <!--<th>#</th>-->
+                <th>Site Name</th>
+                <th>Site Url</th>
+                <th>IP Address</th>
+
+                <th>Theme Name</th>
+                <th>Theme Version</th>
+                <th>Theme Author</th>
+
+                <th>WordPress</th>
+                <th>Last Seen</th>
+              </tr>
+            </thead>
+            <tbody>
+
+            {% for item in data %}
+              <tr>
+                <!--<th scope="row">{{item.uid}}</th>-->
+                <th scope="row">{{item.site_name}}</th>
+                <td>{{item.site_url}}</td>
+                <td>{{item.ip_address}}</td>
+
+                <td>{{item.theme_name}}</td>
+                <td>{{item.theme_version}}</td>
+                <td>{{item.theme_author}}</td>
+
+                <td>{{item.wordpress_version}}</td>
+                <td>{{item.date_time}}</td>
+              </tr>
+            {% endfor %}
+
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>

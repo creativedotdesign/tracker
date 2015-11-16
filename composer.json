@@ -25,7 +25,9 @@
   "require": {
     "slim/slim": "^3.0@RC",
     "lambdacreatives/Database-Connector": "dev-master",
-    "vlucas/phpdotenv": "^2.1"
+    "vlucas/phpdotenv": "^2.1",
+    "slim/twig-view": "^2.0",
+    "jimmiw/php-time-ago": "^0.4.8"
   },
   "require-dev": {
     "squizlabs/php_codesniffer": "2.*"
