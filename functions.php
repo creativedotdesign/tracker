@@ -61,7 +61,10 @@ function get_theme_data() {
 
   $result = $db->query($sql);
   $result = mysqli_fetch_all($result, MYSQLI_ASSOC);
-  //$result = array_filter($result, '');
+
+  foreach ($result as $key => $value) {
+    $result[$key]['date_time'] = timeAgoInWords($value['date_time']);
+  }
 
   //var_dump($result);
 
