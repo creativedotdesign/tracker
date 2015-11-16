@@ -54,7 +54,10 @@ function get_theme_data() {
   $conn = Lambda\Database\Connector::connect($database_connection_settings);
   $db   = Lambda\Database\Connector::getInstance();
 
-  $sql  = "SELECT * FROM theme_data GROUP BY uid ORDER BY id";
+  $sql  = "SELECT * FROM
+            (SELECT * FROM theme_data ORDER BY id DESC)
+          AS theme_data_temp
+          GROUP BY uid";
 
   $result = $db->query($sql);
   $result = mysqli_fetch_all($result, MYSQLI_ASSOC);
