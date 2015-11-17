@@ -27,7 +27,7 @@ $dotenv->required(['DB_HOST', 'DB_NAME', 'DB_USER', 'DB_PASS', 'API_KEY'])->notE
 
 $app = new \Slim\App($container);
 
-$app->post('/api/theme', function ($request, $response, $args) {
+$app->post('/api/v1/theme', function ($request, $response, $args) {
   $result = insert_theme_data($request->getParsedBody());
 
   $response->write(json_encode(array(
