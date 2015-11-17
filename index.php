@@ -42,7 +42,7 @@ $app->post('/api/v1/theme', function ($request, $response, $args) {
 })->add($valid)->add($auth); // Middleware
 
 // Render Twig template in route
-$app->get('/theme-data', function ($request, $response, $args) {
+$app->get('/', function ($request, $response, $args) {
   $data = get_theme_data();
 
   return $this->view->render($response, 'theme-data.html', [
