@@ -57,7 +57,7 @@ function get_theme_data() {
   $sql  = "SELECT * FROM
             (SELECT * FROM theme_data ORDER BY id DESC)
           AS theme_data_temp
-          GROUP BY uid";
+          GROUP BY uid, site_url";
 
   $result = $db->query($sql);
   $result = mysqli_fetch_all($result, MYSQLI_ASSOC);
