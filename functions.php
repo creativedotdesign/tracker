@@ -15,11 +15,11 @@ function insert_theme_data($data) {
   $db   = Lambda\Database\Connector::getInstance();
 
   $sql  = "INSERT INTO theme_data ( uid, theme_name, theme_version, theme_author, site_name, site_url, ip_address, environment, wordpress_version )
-           VALUES ( ?, ?, ?, ?, ?, ?, ?, ? )"; //Build the SQL.
+           VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ? )"; //Build the SQL.
 
   $stmt = $db->prepare($sql); //Prep the SQL.
 
-  $stmt->bind_param('ssssssss', $data['uid'], $data['theme_name'], $data['theme_version'], $data['theme_author'], $data['site_name'], $data['site_url'], $data['ip_address'], $data['environment'], $data['wordpress_version']); //Bind Params
+  $stmt->bind_param('sssssssss', $data['uid'], $data['theme_name'], $data['theme_version'], $data['theme_author'], $data['site_name'], $data['site_url'], $data['ip_address'], $data['environment'], $data['wordpress_version']); //Bind Params
 
   $result = $stmt->execute(); //Execute!
 
