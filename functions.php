@@ -36,8 +36,15 @@ function insert_theme_data($data) {
   }
 }
 
-function filter_date_time($var) {
-
+// Add backwards compatibility for older PHP versions without mysqli_fetch_all
+if (!function_exists('mysqli_fetch_all')) {
+  function mysqli_fetch_all(mysqli_result $result) {
+    $data = [];
+    while ($row = $result->fetch_assoc()) {
+        $data[] = $row;
+    }
+    return $data;
+  }
 }
 
 function get_theme_data() {
